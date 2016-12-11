@@ -1,10 +1,10 @@
 package markOsc;
 
 public class MarkOsc {
-
+	static MarkOscServer s;
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		s = new MarkOscServer();
 	}
 
 }
