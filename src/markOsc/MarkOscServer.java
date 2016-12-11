@@ -11,12 +11,17 @@ public class MarkOscServer {
 	OSCPortIn receiver;
 	OSCPortOut sender;
 	Markov markov;
+	int listeningPort = 12010;
+	int sendPort = 12001;
 
 	MarkOscServer() {
+		System.out.println("Initializing");
 		markov = new Markov();
 		try {
-			receiver = new OSCPortIn(12010);
-			sender = new OSCPortOut(InetAddress.getLocalHost(), 12001); // default port 57120, apparently
+			receiver = new OSCPortIn(listeningPort);
+			System.out.println("Listening for OSC messages on port " + listeningPort);
+			sender = new OSCPortOut(InetAddress.getLocalHost(), sendPort);
+			System.out.println("Sending OSC messages on port " + sendPort);
 			OSCListener listener = new OSCListener() {
 				public void acceptMessage(java.util.Date time,
 						OSCMessage message) {
